@@ -1,127 +1,486 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Home | WeanTech</title>
-  <meta name="description"
-    content="WeanTech builds security architecture, automation, and applied AI that reduce real risk — without the theater." />
-  <meta name="color-scheme" content="dark" />
-  <link rel="icon" href="assets/weantech-logo.png" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>WeanTech LLC | Behavioral Security & Applied Research</title>
+  <meta name="description" content="WeanTech is an independent research and consulting practice focused on behavioral security, insider threat detection, and the cyber-physical seam."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d0d0d;
+      --bg-2:      #111111;
+      --bg-3:      #161616;
+      --rule:      #2a2a2a;
+      --text:      #e8e4dc;
+      --text-dim:  #8a8478;
+      --text-mute: #4a4640;
+      --accent:    #c8a96e;
+      --accent-dim:#7a6440;
+      --white:     #f5f1eb;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Lora', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    .site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--rule);
+      background: rgba(13,13,13,0.96);
+      backdrop-filter: blur(8px);
+    }
+    .site-nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .nav-brand span { color: var(--accent); }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--accent); }
+
+    /* PAGE WRAP */
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 140px 0 100px;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-lede {
+      font-size: 1rem;
+      color: var(--text-dim);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      max-width: 46ch;
+    }
+    .btn-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      border: 1px solid var(--accent-dim);
+      color: var(--accent);
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--bg);
+    }
+    .btn-ghost {
+      border-color: var(--rule);
+      color: var(--text-dim);
+    }
+    .btn-ghost:hover {
+      background: var(--bg-3);
+      border-color: var(--text-dim);
+      color: var(--text);
+    }
+
+    /* HERO RIGHT PANEL */
+    .hero-panel {
+      border-left: 1px solid var(--rule);
+      padding-left: 4rem;
+    }
+    .hero-principle {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .hero-principle:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .principle-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      margin-bottom: 0.4rem;
+    }
+    .principle-text {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    /* CONTENT SECTIONS */
+    .content-section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .section-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      margin-bottom: 1.2rem;
+    }
+    .content-section h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    .content-section p {
+      color: var(--text-dim);
+      max-width: 62ch;
+      margin-bottom: 1rem;
+    }
+    .content-section p:last-child { margin-bottom: 0; }
+    .content-section p em {
+      color: var(--text);
+      font-style: italic;
+    }
+
+    /* FRAMEWORK CALLOUT */
+    .framework-callout {
+      margin-top: 2.5rem;
+      padding: 2rem;
+      border: 1px solid var(--rule);
+      background: var(--bg-2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .framework-callout-text {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--text);
+      max-width: 52ch;
+    }
+
+    /* CARD GRID */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      margin-top: 2.5rem;
+      border: 1px solid var(--rule);
+    }
+    .card {
+      background: var(--bg-2);
+      padding: 2rem;
+      transition: background 0.2s;
+    }
+    .card:hover { background: var(--bg-3); }
+    .card-mono {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .card h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+    .card p {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    /* FEDERAL STRIP */
+    .federal-strip {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .federal-strip-text { max-width: 52ch; }
+    .federal-strip h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+    .federal-strip p {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+    }
+    .federal-tags {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+    }
+    .tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.8rem;
+      border: 1px solid var(--rule);
+      color: var(--text-mute);
+    }
+
+    /* FOOTER */
+    .site-footer {
+      padding: 2rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-note {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+    }
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .footer-links a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 100px 0 60px;
+      }
+      .hero-panel {
+        border-left: none;
+        border-top: 1px solid var(--rule);
+        padding-left: 0;
+        padding-top: 2rem;
+      }
+      .card-grid { grid-template-columns: 1fr; }
+      .federal-strip {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .framework-callout {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
-
 <body>
-  <div class="container">
-    <header class="nav">
-      <a class="brand" href="index.html" aria-label="WeanTech home">
-        <img src="WeanTech_WT_Glow_Transparent.png" alt="WeanTech logo" class="brand-logo">
-        <div>
-          <div class="name">WeanTech</div>
-          <div class="tag">AI-Driven Cybersecurity & Technology Solutions</div>
-        </div>
-      </a>
-      <nav class="navlinks" aria-label="Primary navigation">
-        <a href="index.html" class="active">Home</a>
-        <a href="what-we-do.html" class="">What We Do</a>
-        <a href="how-we-think.html" class="">How We Think</a>
-        <a href="who-were-for.html" class="">Who We’re For</a>
-        <a href="about.html" class="">About</a>
-      </nav>
-    </header>
 
-    <main class="hero" role="main">
-      <div class="kicker"><span class="dot"></span><span>Opaque Clarity security for real-world systems</span></div>
-      <h1>Security that holds up when it matters.</h1>
-      <p class="muted">WeanTech builds security architecture, automation, and applied AI that reduce real risk — without
-        the theater.</p>
-      <div class="hr"></div>
-
-      <div class="grid">
-        <section class="card full">
-          <span class="badge">Positioning</span>
-          <h2>We build defenses that hold up when it matters.</h2>
-          <p>
-            WeanTech exists for organizations that can't afford security theater. We design practical security
-            architecture,
-            build automation that reduces human burden, and apply AI where it earns its keep.
-          </p>
-          <div class="callout">
-            <strong>We don’t collect data from this site.</strong> No tracking pixels. No forms. No funnels.
-            If you understand the mission, you already know how to reach us.
-          </div>
-        </section>
-
-        <section class="card">
-          <span class="badge">What we’re about</span>
-          <h3>Risk reduction over compliance cosplay</h3>
-          <p class="muted">
-            Controls that survive real adversaries. Documentation that supports decisions. Systems that keep working
-            when the day goes sideways.
-          </p>
-          <ul>
-            <li>Security architecture and hardening</li>
-            <li>Threat modeling and adversarial analysis</li>
-            <li>AI-assisted detection and decision support</li>
-            <li>Custom tooling and workflow automation</li>
-          </ul>
-        </section>
-
-        <section class="card">
-          <span class="badge">How we work</span>
-          <h3>Clear deliverables. Tight scope. No mystery meat.</h3>
-          <p class="muted">
-            We operate like an engineering team: define the objective, map the risk, build the system, validate
-            outcomes.
-          </p>
-          <ul>
-            <li>Baseline → roadmap → implementation</li>
-            <li>Secure-by-design defaults</li>
-            <li>Minimal vendor dependency</li>
-            <li>Evidence-driven decisions</li>
-          </ul>
-        </section>
-
-        <section class="card small">
-          <span class="badge">Signal</span>
-          <h3>WeanTech is a good fit for teams that want measurable risk reduction, not just reports.</h3>
-          <p class="muted">
-            If you want a checkbox audit and a glossy binder, hire someone else.
-            If you want real protection, we should talk.
-          </p>
-        </section>
-
-        <section class="card small">
-          <span class="badge">Operating principles</span>
-          <ul>
-            <li><strong>Secure things.</strong> Don’t decorate them.</li>
-            <li><strong>Automate toil.</strong> Preserve judgment.</li>
-            <li><strong>Measure outcomes.</strong> Ignore vanity metrics.</li>
-          </ul>
-        </section>
-
-        <section class="card small">
-          <span class="badge">Start here</span>
-          <p class="muted">
-            Read <a href="how-we-think.html">How We Think</a> first. That page is the filter.
-          </p>
-          <p class="muted">
-            Then see <a href="what-we-do.html">What We Do</a> for capabilities.
-          </p>
-        </section>
-      </div>
-
-    </main>
-
-    <footer class="footer" role="contentinfo">
-      <div>© WeanTech LLC. Built to reduce risk, not generate noise.</div>
-      <div class="mono">
-        <a href="https://weantech.com" target="_blank" rel="noopener">weantech.com</a> •
-        <a href="mailto:contact@weantech.com">contact@weantech.com</a>
-      </div>
-    </footer>
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="nav-brand">Wean<span>Tech</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="capabilities.html">Capabilities</a></li>
+      <li><a href="federal.html">Federal</a></li>
+      <li><a href="opaque-clarity.html">Opaque Clarity</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
   </div>
-</body>
+</nav>
 
+<div class="page-wrap">
+
+  <div class="hero">
+    <div class="hero-text">
+      <p class="hero-eyebrow">WeanTech LLC · Opaque Clarity Security</p>
+      <h1>Most security fails when the threat is <em>human.</em> We build for that case.</h1>
+      <p class="hero-lede">
+        WeanTech is an independent research and consulting practice focused on behavioral security, insider threat detection, and the cyber-physical seam.
+      </p>
+      <div class="btn-row">
+        <a class="btn" href="opaque-clarity.html">The Framework</a>
+        <a class="btn btn-ghost" href="research.html">Active Research</a>
+      </div>
+    </div>
+    <div class="hero-panel">
+      <div class="hero-principle">
+        <p class="principle-label">The Problem</p>
+        <p class="principle-text">Technical controls catch events. Behavioral insight catches intent.</p>
+      </div>
+      <div class="hero-principle">
+        <p class="principle-label">The Approach</p>
+        <p class="principle-text">Clarity for defenders. Opacity for adversaries. By design.</p>
+      </div>
+      <div class="hero-principle">
+        <p class="principle-label">The Standard</p>
+        <p class="principle-text">Systems that hold when the day goes sideways.</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="content-section">
+    <div class="section-label">The Problem</div>
+    <h2>Behavior over bytes.</h2>
+    <p>
+      Security architecture assumes the threat is external. When it isn't, most systems have no answer. WeanTech builds for the harder case, where the adversary already has access, where drift precedes breach, and where psychology matters as much as protocol.
+    </p>
+    <p>
+      The behavioral dimension of security, understanding the <em>why</em> behind technical failures and not just the mechanics, is where the real gaps are. And where our research is pointed.
+    </p>
+    <div class="framework-callout">
+      <p class="framework-callout-text">The hardest case for any security framework is when the threat originates inside the perimeter. Behavioral security is how that case gets answered.</p>
+      <a class="btn" href="opaque-clarity.html">Read the Framework</a>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-label">Active Research</div>
+    <h2>The work behind the practice.</h2>
+    <p>
+      WeanTech maintains active R&D across behavioral detection, federated neural architectures, and cyber-physical security integration. Research informs every engagement.
+    </p>
+    <div class="card-grid">
+      <div class="card">
+        <p class="card-mono">Project 01</p>
+        <h3>OctopusONN</h3>
+        <p>Federated neural network architecture for insider threat detection using continuous-time liquid neural networks.</p>
+      </div>
+      <div class="card">
+        <p class="card-mono">Project 02</p>
+        <h3>Project DOUGLAS</h3>
+        <p>Multi-objective pathfinding with CVaR risk scoring, with a cyber lateral movement variant for adversarial modeling.</p>
+      </div>
+      <div class="card">
+        <p class="card-mono">Project 03</p>
+        <h3>OC|Intel</h3>
+        <p>Live threat intelligence platform integrating behavioral indicators, CVE enrichment, and CISA KEV flagging for unified defender visibility.</p>
+      </div>
+    </div>
+    <div style="margin-top:2rem;">
+      <a class="btn btn-ghost" href="research.html">View All Research</a>
+    </div>
+  </section>
+
+  <div class="federal-strip">
+    <div class="federal-strip-text">
+      <div class="section-label">Federal & DoD</div>
+      <h2>Built for federal and DoD engagement.</h2>
+      <p>WeanTech is pursuing federal contracting and small business research funding across cybersecurity, applied AI, and behavioral analytics.</p>
+    </div>
+    <div>
+      <div class="federal-tags">
+        <span class="tag">SBIR / STTR</span>
+        <span class="tag">NAICS 541715</span>
+        <span class="tag">DoD Adjacent</span>
+        <span class="tag">Small Business</span>
+      </div>
+      <div style="margin-top:1.5rem;">
+        <a class="btn" href="federal.html">Federal Positioning</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="page-wrap">
+  <footer class="site-footer">
+    <span class="footer-note">© 2026 WeanTech LLC</span>
+    <div class="footer-links">
+      <a href="opaque-clarity.html">Opaque Clarity</a>
+      <a href="mailto:contact@weantech.com">Contact</a>
+    </div>
+  </footer>
+</div>
+
+</body>
 </html>

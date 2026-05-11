@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Federal & DoD | WeanTech LLC</title>
+  <meta name="description" content="WeanTech is actively pursuing federal contracting and small business research funding across cybersecurity, applied AI, and behavioral analytics."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d0d0d;
+      --bg-2:      #111111;
+      --bg-3:      #161616;
+      --rule:      #2a2a2a;
+      --text:      #e8e4dc;
+      --text-dim:  #8a8478;
+      --text-mute: #4a4640;
+      --accent:    #c8a96e;
+      --accent-dim:#7a6440;
+      --white:     #f5f1eb;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Lora', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    .site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--rule);
+      background: rgba(13,13,13,0.96);
+      backdrop-filter: blur(8px);
+    }
+    .site-nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .nav-brand span { color: var(--accent); }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--accent); }
+
+    /* PAGE WRAP */
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* PAGE HEAD */
+    .page-head {
+      padding: 140px 0 80px;
+      border-bottom: 1px solid var(--rule);
+      max-width: 780px;
+    }
+    .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .page-head h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    .page-head h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .lede {
+      font-size: 1.05rem;
+      color: var(--text-dim);
+      line-height: 1.8;
+      max-width: 62ch;
+    }
+
+    /* CONTENT SECTION */
+    .content-section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .section-meta {
+      padding-top: 0.25rem;
+      position: sticky;
+      top: 80px;
+    }
+    .section-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .section-number {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--rule);
+      line-height: 1;
+    }
+    .section-body h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      line-height: 1.25;
+    }
+    .section-body p {
+      color: var(--text-dim);
+      margin-bottom: 1.25rem;
+      max-width: 64ch;
+    }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body p em {
+      color: var(--text);
+      font-style: italic;
+    }
+
+    /* RESEARCH ALIGNMENT CARDS */
+    .research-cards {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .research-card {
+      background: var(--bg-2);
+      padding: 1.75rem 2rem;
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 2rem;
+      align-items: start;
+      transition: background 0.2s;
+    }
+    .research-card:hover { background: var(--bg-3); }
+    .research-card-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.3;
+    }
+    .research-card-body p {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin-bottom: 0;
+      max-width: 56ch;
+    }
+    .research-card-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .research-card-link:hover { text-decoration: underline; }
+
+    /* CONTRACTING READINESS GRID */
+    .readiness-grid {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .readiness-item {
+      background: var(--bg-2);
+      padding: 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      transition: background 0.2s;
+    }
+    .readiness-item:hover { background: var(--bg-3); }
+    .readiness-item-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+    }
+    .readiness-item-value {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .readiness-item-value.pending {
+      color: var(--text-mute);
+      font-style: italic;
+    }
+
+    /* CONTACT BLOCK */
+    .contact-block {
+      padding: 80px 0;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .contact-body h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+      line-height: 1.25;
+    }
+    .contact-body p {
+      color: var(--text-dim);
+      max-width: 56ch;
+      margin-bottom: 2rem;
+    }
+    .contact-email {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1rem;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--accent-dim);
+      padding-bottom: 0.2rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .contact-email:hover {
+      color: var(--white);
+      border-color: var(--white);
+    }
+
+    /* FOOTER */
+    .site-footer {
+      padding: 2rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--rule);
+    }
+    .footer-note {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+    }
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .footer-links a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .content-section,
+      .contact-block {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .section-meta { position: static; }
+      .section-number { display: none; }
+      .research-card { grid-template-columns: 1fr; gap: 0.75rem; }
+      .readiness-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="nav-brand">Wean<span>Tech</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="capabilities.html">Capabilities</a></li>
+      <li><a href="federal.html" class="active">Federal</a></li>
+      <li><a href="opaque-clarity.html">Opaque Clarity</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <div class="page-head">
+    <p class="eyebrow">WeanTech LLC · Federal & DoD</p>
+    <h1>Research-driven. <em>Federally positioned.</em></h1>
+    <p class="lede">
+      WeanTech is an independent research and consulting practice actively pursuing federal contracting and small business research funding. The capability is real, the research is active, and the focus areas align directly with federal and DoD priority problems.
+    </p>
+  </div>
+
+  <!-- Section 01: Why Federal -->
+  <div class="content-section">
+    <div class="section-meta">
+      <span class="section-label">Why Federal</span>
+      <div class="section-number">01</div>
+    </div>
+    <div class="section-body">
+      <h2>The problems we work on are federal priority problems.</h2>
+      <p>
+        Insider threat detection, behavioral security, cyber-physical convergence, and AI-assisted defense are not niche academic interests. They are active funding priorities across DoD, DHS, DARPA, and the intelligence community.
+      </p>
+      <p>
+        WeanTech's research portfolio was built around these problems before they became buzzwords. The Opaque Clarity Security Framework, active R&D in federated behavioral detection, and direct experience at the cyber-physical seam position WeanTech for the work federal agencies are actually trying to get done.
+      </p>
+    </div>
+  </div>
+
+  <!-- Section 02: Research Alignment -->
+  <div class="content-section">
+    <div class="section-meta">
+      <span class="section-label">Research Alignment</span>
+      <div class="section-number">02</div>
+    </div>
+    <div class="section-body">
+      <h2>Active R&D mapped to federal need.</h2>
+      <p>
+        Three active research projects, each addressing a documented federal gap:
+      </p>
+      <div class="research-cards">
+        <div class="research-card">
+          <div class="research-card-name">OctopusONN</div>
+          <div class="research-card-body">
+            <p>Federated insider threat detection without centralizing sensitive data. Directly relevant to DoD and intelligence community insider threat programs.</p>
+            <a class="research-card-link" href="research.html">View project</a>
+          </div>
+        </div>
+        <div class="research-card">
+          <div class="research-card-name">Project DOUGLAS</div>
+          <div class="research-card-body">
+            <p>Adversarial path modeling with CVaR risk scoring. Relevant to red team augmentation, cyber resilience, and autonomous systems security.</p>
+            <a class="research-card-link" href="research.html">View project</a>
+          </div>
+        </div>
+        <div class="research-card">
+          <div class="research-card-name">OC|Intel</div>
+          <div class="research-card-body">
+            <p>Live behavioral threat intelligence with CISA KEV integration. Directly aligned with CISA mission priorities and federal SOC augmentation needs.</p>
+            <a class="research-card-link" href="research.html">View project</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 03: Contracting Readiness -->
+  <div class="content-section">
+    <div class="section-meta">
+      <span class="section-label">Contracting Readiness</span>
+      <div class="section-number">03</div>
+    </div>
+    <div class="section-body">
+      <h2>Built to engage.</h2>
+      <p>
+        WeanTech is structured and positioned for federal engagement as a small business research and consulting practice.
+      </p>
+      <div class="readiness-grid">
+        <div class="readiness-item">
+          <span class="readiness-item-label">Primary NAICS</span>
+          <span class="readiness-item-value">541715</span>
+        </div>
+        <div class="readiness-item">
+          <span class="readiness-item-label">Business Designation</span>
+          <span class="readiness-item-value">Small Business</span>
+        </div>
+        <div class="readiness-item">
+          <span class="readiness-item-label">Funding Vehicles</span>
+          <span class="readiness-item-value">SBIR / STTR Eligible</span>
+        </div>
+        <div class="readiness-item">
+          <span class="readiness-item-label">Ownership</span>
+          <span class="readiness-item-value">Veteran-Owned Practice</span>
+        </div>
+        <div class="readiness-item">
+          <span class="readiness-item-label">SAM.gov Registration</span>
+          <span class="readiness-item-value pending">In Progress</span>
+        </div>
+        <div class="readiness-item">
+          <span class="readiness-item-label">Focus Areas</span>
+          <span class="readiness-item-value">Behavioral Security, Applied AI, Cyber-Physical</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div class="contact-block">
+    <div class="section-meta">
+      <span class="section-label">Contact</span>
+    </div>
+    <div class="contact-body">
+      <h2>Direct inquiry. No intermediaries.</h2>
+      <p>
+        Contracting officers, program managers, and SBIR reviewers can reach the principal directly. No front desk, no account manager, no delay.
+      </p>
+      <a class="contact-email" href="mailto:contact@weantech.com">contact@weantech.com</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="page-wrap">
+  <footer class="site-footer">
+    <span class="footer-note">© 2026 WeanTech LLC</span>
+    <div class="footer-links">
+      <a href="opaque-clarity.html">Opaque Clarity</a>
+      <a href="mailto:contact@weantech.com">Contact</a>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>

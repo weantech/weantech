@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Research | WeanTech LLC</title>
+  <meta name="description" content="Active R&D across behavioral detection, federated neural architectures, and cyber-physical security integration."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d0d0d;
+      --bg-2:      #111111;
+      --bg-3:      #161616;
+      --rule:      #2a2a2a;
+      --text:      #e8e4dc;
+      --text-dim:  #8a8478;
+      --text-mute: #4a4640;
+      --accent:    #c8a96e;
+      --accent-dim:#7a6440;
+      --white:     #f5f1eb;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Lora', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    .site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--rule);
+      background: rgba(13,13,13,0.96);
+      backdrop-filter: blur(8px);
+    }
+    .site-nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .nav-brand span { color: var(--accent); }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--accent); }
+
+    /* PAGE WRAP */
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* PAGE HEAD */
+    .page-head {
+      padding: 140px 0 80px;
+      border-bottom: 1px solid var(--rule);
+      max-width: 780px;
+    }
+    .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .page-head h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    .page-head h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .lede {
+      font-size: 1.05rem;
+      color: var(--text-dim);
+      line-height: 1.8;
+      max-width: 62ch;
+    }
+
+    /* PROJECT BLOCK */
+    .project-block {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    /* PROJECT META */
+    .project-meta {
+      position: sticky;
+      top: 80px;
+    }
+    .project-number {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--rule);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+    .project-status {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      margin-bottom: 0.5rem;
+    }
+    .project-status-value {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .project-status-value::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .project-focus-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      margin-bottom: 0.4rem;
+    }
+    .project-focus-value {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    /* PROJECT BODY */
+    .project-body h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    .project-body p {
+      color: var(--text-dim);
+      margin-bottom: 1.25rem;
+      max-width: 64ch;
+    }
+    .project-body p em {
+      color: var(--text);
+      font-style: italic;
+    }
+
+    /* FOCUS AREAS */
+    .focus-areas {
+      margin-top: 2rem;
+      border: 1px solid var(--rule);
+      background: var(--bg-2);
+    }
+    .focus-areas-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      padding: 1rem 1.5rem 0.75rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .focus-list {
+      list-style: none;
+    }
+    .focus-list li {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      padding: 0.75rem 1.5rem;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .focus-list li:last-child { border-bottom: none; }
+    .focus-list li:hover {
+      background: var(--bg-3);
+      color: var(--text);
+    }
+    .focus-list li::before {
+      content: '→';
+      color: var(--accent);
+      font-size: 0.7rem;
+      flex-shrink: 0;
+    }
+
+    /* OC INTEL SCREENSHOT PLACEHOLDER */
+    .screenshot-placeholder {
+      margin-top: 2rem;
+      border: 1px solid var(--rule);
+      background: var(--bg-2);
+      aspect-ratio: 16/9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      max-width: 640px;
+    }
+    .screenshot-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+    }
+    .screenshot-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--text-dim);
+    }
+
+    /* FRAMEWORK NOTE */
+    .framework-note {
+      margin-top: 2rem;
+      padding: 1.25rem 1.5rem;
+      border-left: 2px solid var(--accent);
+      background: var(--bg-2);
+    }
+    .framework-note p {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+    .framework-note a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .framework-note a:hover {
+      text-decoration: underline;
+    }
+
+    /* BTN */
+    .btn {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      border: 1px solid var(--accent-dim);
+      color: var(--accent);
+      display: inline-block;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      margin-top: 2rem;
+    }
+    .btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--bg);
+    }
+
+    /* FOOTER */
+    .site-footer {
+      padding: 2rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--rule);
+    }
+    .footer-note {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+    }
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .footer-links a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .project-block {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .project-meta { position: static; }
+      .project-number { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="nav-brand">Wean<span>Tech</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="research.html" class="active">Research</a></li>
+      <li><a href="capabilities.html">Capabilities</a></li>
+      <li><a href="federal.html">Federal</a></li>
+      <li><a href="opaque-clarity.html">Opaque Clarity</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <div class="page-head">
+    <p class="eyebrow">WeanTech LLC · Active R&D</p>
+    <h1>Research that makes the framework <em>operational.</em></h1>
+    <p class="lede">
+      WeanTech maintains active research across behavioral detection, federated neural architectures, and cyber-physical security integration. These are not proof-of-concept exercises. They are the applied foundation of every engagement.
+    </p>
+  </div>
+
+  <!-- Project 01: OctopusONN -->
+  <div class="project-block">
+    <div class="project-meta">
+      <div class="project-number">01</div>
+      <p class="project-status">Status</p>
+      <p class="project-status-value">Ongoing Research</p>
+      <p class="project-focus-label">Focus Area</p>
+      <p class="project-focus-value">Federated Insider<br>Threat Detection</p>
+    </div>
+    <div class="project-body">
+      <h2>OctopusONN</h2>
+      <p>
+        A federated neural network architecture for insider threat detection built on continuous-time liquid neural networks. OctopusONN is designed to detect behavioral drift across distributed environments without centralizing sensitive data, preserving privacy while maintaining detection fidelity.
+      </p>
+      <div class="focus-areas">
+        <p class="focus-areas-label">Technical Focus Areas</p>
+        <ul class="focus-list">
+          <li>Continuous-time liquid neural networks (CfC/NCP architecture)</li>
+          <li>Federated learning across distributed nodes</li>
+          <li>Behavioral drift detection and anomaly scoring</li>
+          <li>Privacy-preserving inference</li>
+        </ul>
+      </div>
+      <div class="framework-note">
+        <p>OctopusONN addresses the hard case in the <a href="opaque-clarity.html">Opaque Clarity Security Framework</a>: detecting insider behavioral drift before a technical event occurs.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project 02: Project DOUGLAS -->
+  <div class="project-block">
+    <div class="project-meta">
+      <div class="project-number">02</div>
+      <p class="project-status">Status</p>
+      <p class="project-status-value">Ongoing Research</p>
+      <p class="project-focus-label">Focus Area</p>
+      <p class="project-focus-value">Adversarial Path<br>Modeling</p>
+    </div>
+    <div class="project-body">
+      <h2>Project DOUGLAS</h2>
+      <p>
+        A multi-objective pathfinding system with CVaR risk scoring, extended to model cyber lateral movement. Project DOUGLAS maps the decision space an adversary navigates inside a compromised environment, giving defenders a probabilistic view of likely escalation paths before they occur.
+      </p>
+      <div class="focus-areas">
+        <p class="focus-areas-label">Technical Focus Areas</p>
+        <ul class="focus-list">
+          <li>Multi-objective pathfinding under uncertainty</li>
+          <li>CVaR risk scoring for adversarial modeling</li>
+          <li>Cyber lateral movement variant</li>
+          <li>Defender-side probability mapping</li>
+        </ul>
+      </div>
+      <div class="framework-note">
+        <p>Project DOUGLAS operationalizes the opacity side of the <a href="opaque-clarity.html">Opaque Clarity Security Framework</a>: understanding what an adversary sees so defenders can eliminate that view.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project 03: OC|Intel -->
+  <div class="project-block">
+    <div class="project-meta">
+      <div class="project-number">03</div>
+      <p class="project-status">Status</p>
+      <p class="project-status-value">Ongoing Research</p>
+      <p class="project-focus-label">Focus Area</p>
+      <p class="project-focus-value">Behavioral Threat<br>Intelligence</p>
+    </div>
+    <div class="project-body">
+      <h2>OC|Intel</h2>
+      <p>
+        A live threat intelligence platform built under the Opaque Clarity Security Framework. OC|Intel aggregates feeds from seven curated sources, enriches CVEs via the NVD API, flags articles against the CISA Known Exploited Vulnerabilities catalog, and surfaces insider threat signals alongside technical telemetry. KEV-flagged and critical severity items are prioritized automatically.
+      </p>
+    
+      <div class="focus-areas">
+        <p class="focus-areas-label">Technical Focus Areas</p>
+        <ul class="focus-list">
+          <li>Behavioral indicator integration and insider threat tagging</li>
+          <li>CVE enrichment via NVD API with severity scoring</li>
+          <li>CISA KEV catalog flagging and prioritization</li>
+          <li>Multi-source threat intelligence aggregation</li>
+        </ul>
+      </div>
+      <div class="framework-note">
+        <p>OC|Intel is the defender-visibility component of the <a href="opaque-clarity.html">Opaque Clarity Security Framework</a>: unified signal across human and network indicators in a single surface.</p>
+      </div>
+    </div>
+  </div>
+
+  <a class="btn" href="capabilities.html">See What WeanTech Delivers</a>
+
+</div>
+
+<div class="page-wrap">
+  <footer class="site-footer">
+    <span class="footer-note">© 2026 WeanTech LLC</span>
+    <div class="footer-links">
+      <a href="opaque-clarity.html">Opaque Clarity</a>
+      <a href="mailto:contact@weantech.com">Contact</a>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
