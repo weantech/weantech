@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Opaque Clarity | WeanTech LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg: #0d0d0d; --bg-2: #111111; --rule: #2a2a2a; --text: #e8e4dc; --text-dim: #8a8478; --text-mute: #4a4640; --accent: #c8a96e; --white: #f5f1eb; }
+    body { background: var(--bg); color: var(--text); font-family: 'Lora', Georgia, serif; line-height: 1.7; -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column; }
+    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; border-bottom: 1px solid var(--rule); background: rgba(13,13,13,0.96); backdrop-filter: blur(8px); }
+    .site-nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand { font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem; color: var(--text); text-decoration: none; text-transform: uppercase; }
+    .nav-brand span { color: var(--accent); }
+    .nav-links { list-style: none; display: flex; gap: 2rem; }
+    .nav-links a { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; text-transform: uppercase; color: var(--text-dim); text-decoration: none; }
+    .nav-links a.active { color: var(--accent); }
+    .page-wrap { max-width: 1100px; margin: 0 auto; padding: 140px 2rem 80px; flex: 1; }
+    .page-head { border-bottom: 1px solid var(--rule); padding-bottom: 80px; margin-bottom: 80px; }
+    .page-head h1 { font-family: 'Playfair Display', Georgia, serif; font-size: 2.5rem; color: var(--white); }
+    .section-body h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 2rem; color: var(--white); margin-bottom: 1.5rem; }
+    .section-body p { color: var(--text-dim); margin-bottom: 1.25rem; max-width: 64ch; }
+    .axiom-block { margin: 2rem 0; padding: 1.75rem 2rem; border-left: 2px solid var(--accent); background: var(--bg-2); }
+    .axiom-block p { font-family: 'Playfair Display', Georgia, serif; font-size: 1.1rem; font-style: italic; color: var(--white); }
+    .site-footer { padding: 2rem 0; border-top: 1px solid var(--rule); max-width: 1100px; margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between; padding-left: 2rem; padding-right: 2rem; }
+    .footer-note { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-mute); }
+    .footer-links a { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-mute); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+<nav class="site-nav">
+  <div class="site-nav-inner"><a href="index.html" class="nav-brand">Wean<span>Tech</span></a>
+    <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="research.html">Research</a></li><li><a href="capabilities.html">Capabilities</a></li><li><a href="opaque-clarity.html" class="active">Opaque Clarity</a></li><li><a href="about.html">About</a></li></ul>
+  </div>
+</nav>
+<div class="page-wrap">
+  <div class="page-head"><h1>Clarity for defenders. Opacity for adversaries. <em>By design.</em></h1></div>
+  <div class="section-body">
+    <h2>Asymmetric visibility.</h2>
+    <p>Opaque Clarity is a security design philosophy built on the principle of asymmetric visibility. Optimization for defenders who see everything, and adversaries who see nothing useful.</p>
+    <div class="axiom-block">
+      <p>The insider threat is not a network problem with a human component. It is a human problem with a network component.</p>
+    </div>
+  </div>
+</div>
+<footer class="site-footer">
+  <span class="footer-note">© 2026 WeanTech LLC</span>
+  <div class="footer-links">
+    <a href="mailto:contact@weantech.com">Contact</a>
+  </div>
+</footer>
+</body>
+</html>
