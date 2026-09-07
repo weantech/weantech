@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Research | WeanTech LLC</title>
+  <meta name="description" content="Evidence-led research into resilient communications, cyber-physical security, human-controlled decision support, and autonomous systems under adversarial conditions."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d0d0d;
+      --bg-2:      #111111;
+      --bg-3:      #161616;
+      --rule:      #2a2a2a;
+      --text:      #e8e4dc;
+      --text-dim:  #8a8478;
+      --text-mute: #4a4640;
+      --accent:    #c8a96e;
+      --accent-dim:#7a6440;
+      --white:     #f5f1eb;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Lora', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    .site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--rule);
+      background: rgba(13,13,13,0.96);
+      backdrop-filter: blur(8px);
+    }
+    .site-nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .nav-brand span { color: var(--accent); }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--accent); }
+
+    /* PAGE WRAP */
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* PAGE HEAD */
+    .page-head {
+      padding: 140px 0 80px;
+      border-bottom: 1px solid var(--rule);
+      max-width: 780px;
+    }
+    .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .page-head h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    .page-head h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .lede {
+      font-size: 1.05rem;
+      color: var(--text-dim);
+      line-height: 1.8;
+      max-width: 62ch;
+    }
+
+    /* PROJECT BLOCK */
+    .project-block {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    /* PROJECT META */
+    .project-meta {
+      position: sticky;
+      top: 80px;
+    }
+    .project-number {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--rule);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+    .project-status {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      margin-bottom: 0.5rem;
+    }
+    .project-status-value {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .project-status-value::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .project-focus-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      margin-bottom: 0.4rem;
+    }
+    .project-focus-value {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    /* PROJECT BODY */
+    .project-body h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    .project-body p {
+      color: var(--text-dim);
+      margin-bottom: 1.25rem;
+      max-width: 64ch;
+    }
+    .project-body p em {
+      color: var(--text);
+      font-style: italic;
+    }
+
+    /* FOCUS AREAS */
+    .focus-areas {
+      margin-top: 2rem;
+      border: 1px solid var(--rule);
+      background: var(--bg-2);
+    }
+    .focus-areas-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      padding: 1rem 1.5rem 0.75rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .focus-list {
+      list-style: none;
+    }
+    .focus-list li {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      padding: 0.75rem 1.5rem;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .focus-list li:last-child { border-bottom: none; }
+    .focus-list li:hover {
+      background: var(--bg-3);
+      color: var(--text);
+    }
+    .focus-list li::before {
+      content: '→';
+      color: var(--accent);
+      font-size: 0.7rem;
+      flex-shrink: 0;
+    }
+
+    /* FRAMEWORK NOTE */
+    .framework-note {
+      margin-top: 2rem;
+      padding: 1.25rem 1.5rem;
+      border-left: 2px solid var(--accent);
+      background: var(--bg-2);
+    }
+    .framework-note p {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+    .framework-note a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .framework-note a:hover {
+      text-decoration: underline;
+    }
+
+    /* BTN */
+    .btn {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      border: 1px solid var(--accent-dim);
+      color: var(--accent);
+      display: inline-block;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      margin-top: 2rem;
+    }
+    .btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--bg);
+    }
+
+    /* FOOTER */
+    .site-footer {
+      padding: 2rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--rule);
+    }
+    .footer-note {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+    }
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .footer-links a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .project-block {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .project-meta { position: static; }
+      .project-number { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="nav-brand">Wean<span>Tech</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="research.html" class="active">Research</a></li>
+      <li><a href="capabilities.html">Field Work</a></li>
+      <li><a href="opaque-clarity.html">Principles</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <div class="page-head">
+    <p class="eyebrow">WeanTech LLC · Research</p>
+    <h1>Research for the conditions <em>we hope never arrive.</em></h1>
+    <p class="lede">
+      WeanTech investigates how communication, operations, and human judgment can remain useful when conventional infrastructure is unavailable, compromised, or cannot be trusted. We publish the question, the prototype boundaries, and the evidence as the work progresses.
+    </p>
+  </div>
+
+  <div class="project-block">
+    <div class="project-meta">
+      <div class="project-number">01</div>
+      <p class="project-status">Status</p>
+      <p class="project-status-value">Prototype · Phase I</p>
+      <p class="project-focus-label">Focus Area</p>
+      <p class="project-focus-value">Rapidly Deployable<br>Communications</p>
+    </div>
+    <div class="project-body">
+      <h2>Project MESH</h2>
+      <p>
+        Can minimally trained responders establish a secure, local communications network for a small incident area in 15 minutes or less—without commercial Internet or cellular service—and keep it useful as nodes join, move, or fail? Project MESH is a research demonstrator designed to test that question.
+      </p>
+      <div class="focus-areas">
+        <p class="focus-areas-label">Phase I Scope</p>
+        <ul class="focus-list">
+          <li>Six to ten battery-powered portable nodes using lawful, mature components</li>
+          <li>Local messaging, status sharing, and basic location where available</li>
+          <li>Device identity, encryption, role-based access, and route recovery</li>
+          <li>A local interface that remains useful without cloud dependency</li>
+        </ul>
+      </div>
+      <div class="framework-note">
+        <p><strong>Research boundary:</strong> Project MESH is a prototype, not a certified public-safety system. Phase I does not connect to 911 or public-safety radio networks, operate in licensed spectrum without authorization, or make autonomous life-safety decisions.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-block">
+    <div class="project-meta">
+      <div class="project-number">02</div>
+      <p class="project-status">Status</p>
+      <p class="project-status-value">Research Theme</p>
+      <p class="project-focus-label">Focus Area</p>
+      <p class="project-focus-value">Continuity Under<br>Disruption</p>
+    </div>
+    <div class="project-body">
+      <h2>Resilient Operations</h2>
+      <p>
+        How much useful operational capability can an organization retain when cloud services, identity systems, connectivity, or a critical vendor are unavailable? This theme studies practical dependencies and the degraded-mode workflows that can reduce their impact.
+      </p>
+      <div class="focus-areas">
+        <p class="focus-areas-label">Questions We Are Exploring</p>
+        <ul class="focus-list">
+          <li>Which dependencies create the largest operational failure cascades?</li>
+          <li>Which communications and decision workflows can work locally?</li>
+          <li>How should cyber and physical recovery priorities be coordinated?</li>
+          <li>What evidence is needed before a continuity claim can be trusted?</li>
+        </ul>
+      </div>
+      <div class="framework-note">
+        <p>This theme informs field assessments and prototype design. It is not currently a commercial product.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-block">
+    <div class="project-meta">
+      <div class="project-number">03</div>
+      <p class="project-status">Status</p>
+      <p class="project-status-value">Research Theme</p>
+      <p class="project-focus-label">Focus Area</p>
+      <p class="project-focus-value">Human-Controlled<br>Decision Support</p>
+    </div>
+    <div class="project-body">
+      <h2>Human-Controlled Decision Support</h2>
+      <p>
+        AI can help organize information in a rapidly evolving incident, but it should not replace judgment. This theme examines how decision support can remain auditable, bounded, and useful under uncertainty—especially when communications are constrained or adversarial conditions are present.
+      </p>
+    
+      <div class="focus-areas">
+        <p class="focus-areas-label">Operating Standard</p>
+        <ul class="focus-list">
+          <li>A non-AI fallback must preserve the core mission</li>
+          <li>Human authority and override boundaries must be explicit</li>
+          <li>Inputs, outputs, and material override events should be recorded</li>
+          <li>Failure, misuse, and data-handling risks must be tested before reliance</li>
+        </ul>
+      </div>
+      <div class="framework-note">
+        <p>Responsible AI is a working standard, not a marketing label. Read our <a href="opaque-clarity.html">research principles</a>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-block">
+    <div class="project-meta">
+      <div class="project-number">04</div>
+      <p class="project-status">Status</p>
+      <p class="project-status-value">Emerging Research</p>
+      <p class="project-focus-label">Focus Area</p>
+      <p class="project-focus-value">Adversarial<br>Autonomous Systems</p>
+    </div>
+    <div class="project-body">
+      <h2>Project ARENA</h2>
+      <p>
+        How should autonomous AI agents be evaluated when the environment is dynamic, partially observable, and actively responds to their behavior? Project ARENA is a research framework for studying situational awareness, long-horizon planning, tool use, adaptation, and recovery under adversarial conditions.
+      </p>
+      <div class="focus-areas">
+        <p class="focus-areas-label">Initial Research Questions</p>
+        <ul class="focus-list">
+          <li>Can an agent maintain a coherent objective across long sequences of actions?</li>
+          <li>Does an agent recognize when an adversary has adapted to its behavior?</li>
+          <li>Which combinations of perception, memory, planning, and tool use improve adaptation?</li>
+          <li>Can performance be measured reproducibly rather than inferred from demonstrations?</li>
+        </ul>
+      </div>
+      <div class="framework-note">
+        <p><strong>Research boundary:</strong> Project ARENA is an emerging research concept, not a deployed autonomous cybersecurity capability. Initial experiments use controlled environments before any defensive cybersecurity application is considered.</p>
+      </div>
+    </div>
+  </div>
+
+  <a class="btn" href="capabilities.html">Explore Field Work</a>
+
+</div>
+
+<div class="page-wrap">
+  <footer class="site-footer">
+    <span class="footer-note">© 2026 WeanTech LLC</span>
+    <div class="footer-links">
+      <a href="opaque-clarity.html">Principles</a>
+      <a href="mailto:contact@weantech.com">Contact</a>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
+

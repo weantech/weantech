@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>WeanTech LLC | Applied R&D for Resilient Systems</title>
+  <meta name="description" content="WeanTech develops and evaluates secure, rapidly deployable systems for disrupted and high-consequence environments."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d0d0d;
+      --bg-2:      #111111;
+      --bg-3:      #161616;
+      --rule:      #2a2a2a;
+      --text:      #e8e4dc;
+      --text-dim:  #8a8478;
+      --text-mute: #4a4640;
+      --accent:    #c8a96e;
+      --accent-dim:#7a6440;
+      --white:     #f5f1eb;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Lora', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    .site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--rule);
+      background: rgba(13,13,13,0.96);
+      backdrop-filter: blur(8px);
+    }
+    .site-nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .nav-brand span { color: var(--accent); }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--accent); }
+
+    /* PAGE WRAP */
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 140px 0 100px;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-lede {
+      font-size: 1rem;
+      color: var(--text-dim);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      max-width: 46ch;
+    }
+    .btn-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      border: 1px solid var(--accent-dim);
+      color: var(--accent);
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--bg);
+    }
+    .btn-ghost {
+      border-color: var(--rule);
+      color: var(--text-dim);
+    }
+    .btn-ghost:hover {
+      background: var(--bg-3);
+      border-color: var(--text-dim);
+      color: var(--text);
+    }
+
+    /* HERO RIGHT PANEL */
+    .hero-panel {
+      border-left: 1px solid var(--rule);
+      padding-left: 4rem;
+    }
+    .hero-principle {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .hero-principle:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .principle-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      margin-bottom: 0.4rem;
+    }
+    .principle-text {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    /* CONTENT SECTIONS */
+    .content-section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .section-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      margin-bottom: 1.2rem;
+    }
+    .content-section h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    .content-section p {
+      color: var(--text-dim);
+      max-width: 62ch;
+      margin-bottom: 1rem;
+    }
+    .content-section p:last-child { margin-bottom: 0; }
+    .content-section p em {
+      color: var(--text);
+      font-style: italic;
+    }
+
+    /* FRAMEWORK CALLOUT */
+    .framework-callout {
+      margin-top: 2.5rem;
+      padding: 2rem;
+      border: 1px solid var(--rule);
+      background: var(--bg-2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .framework-callout-text {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--text);
+      max-width: 52ch;
+    }
+
+    /* CARD GRID */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      margin-top: 2.5rem;
+      border: 1px solid var(--rule);
+    }
+    .card {
+      background: var(--bg-2);
+      padding: 2rem;
+      transition: background 0.2s;
+    }
+    .card:hover { background: var(--bg-3); }
+    .card-mono {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .card h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+    .card p {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    /* FEDERAL STRIP */
+    .federal-strip {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .federal-strip-text { max-width: 52ch; }
+    .federal-strip h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+    .federal-strip p {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      padding: 2rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-note {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+    }
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .footer-links a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 100px 0 60px;
+      }
+      .hero-panel {
+        border-left: none;
+        border-top: 1px solid var(--rule);
+        padding-left: 0;
+        padding-top: 2rem;
+      }
+      .card-grid { grid-template-columns: 1fr; }
+      .federal-strip {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .framework-callout {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="nav-brand">Wean<span>Tech</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="capabilities.html">Field Work</a></li>
+      <li><a href="opaque-clarity.html">Principles</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <div class="hero">
+    <div class="hero-text">
+      <p class="hero-eyebrow">WeanTech LLC · Applied R&D for Resilient Systems</p>
+      <h1>When conventional infrastructure fails, <em>essential capability should not.</em></h1>
+      <p class="hero-lede">
+        WeanTech develops and evaluates secure, rapidly deployable systems for disrupted and high-consequence environments. Our work connects resilient communications, cyber-physical security, and human-controlled decision support.
+      </p>
+      <div class="btn-row">
+        <a class="btn" href="research.html">Explore Project MESH</a>
+        <a class="btn btn-ghost" href="capabilities.html">Partner on Field Work</a>
+      </div>
+    </div>
+    <div class="hero-panel">
+      <div class="hero-principle">
+        <p class="principle-label">Degraded-Mode First</p>
+        <p class="principle-text">Core capabilities must remain useful without Internet, cloud access, or a healthy primary network.</p>
+      </div>
+      <div class="hero-principle">
+        <p class="principle-label">Human Accountable</p>
+        <p class="principle-text">Automated support must be understandable, auditable, and always subject to human authority.</p>
+      </div>
+      <div class="hero-principle">
+        <p class="principle-label">Evidence Over Hype</p>
+        <p class="principle-text">We define the operating conditions, test the limits, and state what the evidence supports.</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="content-section">
+    <div class="section-label">The Research Question</div>
+    <h2>What must still work when ordinary infrastructure cannot be assumed?</h2>
+    <p>
+      Disasters, outages, cyber incidents, and vendor failures expose the dependencies hidden in everyday operations. WeanTech researches practical systems that preserve communication, situational awareness, and sound human judgment when those dependencies break.
+    </p>
+    <p>
+      The work begins at the physical-cyber edge: where networks, security, people, and real-world consequences meet. AI may assist a clearly bounded task, but it is never the mission and never the sole path to a working system.
+    </p>
+    <div class="framework-callout">
+      <p class="framework-callout-text">Responsible technology should be rapidly deployable, secure by design, interoperable where possible, and useful under stress.</p>
+      <a class="btn" href="opaque-clarity.html">Our Principles</a>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="section-label">Research Portfolio</div>
+    <h2>One active program. One emerging line of inquiry.</h2>
+    <p>
+      WeanTech is beginning with practical, testable problems rather than a catalog of speculative products. Project MESH is the active research demonstrator; adjacent themes define where the work can lead, and a new line of inquiry is emerging around autonomous systems operating under adversarial conditions.
+    </p>
+    <div class="card-grid">
+      <div class="card">
+        <p class="card-mono">Active Prototype</p>
+        <h3>Project MESH</h3>
+        <p>Can a small team establish secure local communications in 15 minutes or less without cellular, Internet, or cloud dependencies?</p>
+      </div>
+      <div class="card">
+        <p class="card-mono">Research Theme</p>
+        <h3>Resilient Operations</h3>
+        <p>How can organizations retain useful operational capability during the loss of cloud, identity, connectivity, or a critical vendor?</p>
+      </div>
+      <div class="card">
+        <p class="card-mono">Research Theme</p>
+        <h3>Human-Controlled Decision Support</h3>
+        <p>How can technology help operators make decisions under uncertainty while keeping authority, accountability, and override with people?</p>
+      </div>
+      <div class="card">
+        <p class="card-mono">Emerging Research</p>
+        <h3>Project ARENA</h3>
+        <p>How should autonomous agents be evaluated when environments are dynamic, partially observable, and actively adapt to the agent’s behavior?</p>
+      </div>
+    </div>
+    <div style="margin-top:2rem;">
+      <a class="btn btn-ghost" href="research.html">See the Research</a>
+    </div>
+  </section>
+
+  <div class="federal-strip">
+    <div class="federal-strip-text">
+      <div class="section-label">Field Work</div>
+      <h2>Research-led partnership for real operating environments.</h2>
+      <p>WeanTech works with organizations that need an independent view of AI risk, operational resilience, or a structured field study. Every engagement begins with the mission and the failure conditions—not a product pitch.</p>
+    </div>
+    <div>
+      <div style="margin-top:1.5rem;">
+        <a class="btn" href="mailto:contact@weantech.com">Start a Conversation</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="page-wrap">
+  <footer class="site-footer">
+    <span class="footer-note">© 2026 WeanTech LLC</span>
+    <div class="footer-links">
+      <a href="opaque-clarity.html">Principles</a>
+      <a href="mailto:contact@weantech.com">Contact</a>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
+
