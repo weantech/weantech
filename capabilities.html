@@ -1,386 +1,28 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Field Work | WeanTech LLC</title>
-  <meta name="description" content="Independent AI assurance, resilience assessments, and evidence-led field studies for high-consequence environments."/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:        #0d0d0d;
-      --bg-2:      #111111;
-      --bg-3:      #161616;
-      --rule:      #2a2a2a;
-      --text:      #e8e4dc;
-      --text-dim:  #8a8478;
-      --text-mute: #4a4640;
-      --accent:    #c8a96e;
-      --accent-dim:#7a6440;
-      --white:     #f5f1eb;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Lora', Georgia, serif;
-      font-size: 17px;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* NAV */
-    .site-nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      border-bottom: 1px solid var(--rule);
-      background: rgba(13,13,13,0.96);
-      backdrop-filter: blur(8px);
-    }
-    .site-nav-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .nav-brand {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      color: var(--text);
-      text-decoration: none;
-      text-transform: uppercase;
-    }
-    .nav-brand span { color: var(--accent); }
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
-    .nav-links a {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover,
-    .nav-links a.active { color: var(--accent); }
-
-    /* PAGE WRAP */
-    .page-wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* PAGE HEAD */
-    .page-head {
-      padding: 140px 0 80px;
-      border-bottom: 1px solid var(--rule);
-      max-width: 780px;
-    }
-    .eyebrow {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.5rem;
-    }
-    .page-head h1 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      line-height: 1.2;
-      color: var(--white);
-      margin-bottom: 1.5rem;
-    }
-    .page-head h1 em {
-      font-style: italic;
-      color: var(--accent);
-    }
-    .lede {
-      font-size: 1.05rem;
-      color: var(--text-dim);
-      line-height: 1.8;
-      max-width: 62ch;
-    }
-
-    /* SERVICE BLOCK */
-    .service-block {
-      padding: 80px 0;
-      border-bottom: 1px solid var(--rule);
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    /* SERVICE META */
-    .service-meta {
-      position: sticky;
-      top: 80px;
-    }
-    .service-number {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 3.5rem;
-      font-weight: 700;
-      color: var(--rule);
-      line-height: 1;
-      margin-bottom: 1.5rem;
-    }
-    .service-label {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      line-height: 1.6;
-    }
-
-    /* SERVICE BODY */
-    .service-body h2 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 1.5rem;
-      line-height: 1.25;
-    }
-    .service-body p {
-      color: var(--text-dim);
-      margin-bottom: 1.25rem;
-      max-width: 64ch;
-    }
-    .service-body p em {
-      color: var(--text);
-      font-style: italic;
-    }
-
-    /* DELIVERABLES LIST */
-    .deliverables {
-      margin-top: 2rem;
-      border: 1px solid var(--rule);
-      background: var(--bg-2);
-    }
-    .deliverables-label {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-mute);
-      padding: 1rem 1.5rem 0.75rem;
-      border-bottom: 1px solid var(--rule);
-    }
-    .deliverables-list {
-      list-style: none;
-    }
-    .deliverables-list li {
-      font-family: 'Lora', Georgia, serif;
-      font-size: 0.9rem;
-      color: var(--text-dim);
-      padding: 0.85rem 1.5rem;
-      border-bottom: 1px solid var(--rule);
-      display: flex;
-      align-items: start;
-      gap: 0.75rem;
-      transition: background 0.2s, color 0.2s;
-      line-height: 1.5;
-    }
-    .deliverables-list li:last-child { border-bottom: none; }
-    .deliverables-list li:hover {
-      background: var(--bg-3);
-      color: var(--text);
-    }
-    .deliverables-list li::before {
-      content: '→';
-      font-family: 'IBM Plex Mono', monospace;
-      color: var(--accent);
-      font-size: 0.7rem;
-      flex-shrink: 0;
-      margin-top: 0.2rem;
-    }
-
-    /* FRAMEWORK NOTE */
-    .framework-note {
-      margin-top: 2rem;
-      padding: 1.25rem 1.5rem;
-      border-left: 2px solid var(--accent);
-      background: var(--bg-2);
-    }
-    .framework-note p {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--text-dim);
-      line-height: 1.6;
-      margin-bottom: 0;
-    }
-    .framework-note a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    .framework-note a:hover { text-decoration: underline; }
-
-    /* SOLO BLOCK */
-    .solo-block {
-      padding: 80px 0;
-      border-bottom: 1px solid var(--rule);
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-    .solo-label {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-mute);
-    }
-    .solo-body h2 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(1.4rem, 2.5vw, 2rem);
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 1.25rem;
-      line-height: 1.25;
-    }
-    .solo-body p {
-      color: var(--text-dim);
-      max-width: 64ch;
-    }
-
-    /* CTA BLOCK */
-    .cta-block {
-      padding: 80px 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--rule);
-      border: 1px solid var(--rule);
-      margin-bottom: 0;
-    }
-    .cta-panel {
-      background: var(--bg-2);
-      padding: 3rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      transition: background 0.2s;
-    }
-    .cta-panel:hover { background: var(--bg-3); }
-    .cta-panel-label {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-    .cta-panel h3 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.3;
-    }
-    .cta-panel p {
-      font-size: 0.9rem;
-      color: var(--text-dim);
-      line-height: 1.7;
-    }
-    .btn {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.75rem 1.5rem;
-      text-decoration: none;
-      border: 1px solid var(--accent-dim);
-      color: var(--accent);
-      display: inline-block;
-      transition: background 0.2s, border-color 0.2s, color 0.2s;
-      align-self: flex-start;
-      margin-top: auto;
-    }
-    .btn:hover {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: var(--bg);
-    }
-    .btn-ghost {
-      border-color: var(--rule);
-      color: var(--text-dim);
-    }
-    .btn-ghost:hover {
-      background: var(--bg-3);
-      border-color: var(--text-dim);
-      color: var(--text);
-    }
-
-    /* FOOTER */
-    .site-footer {
-      padding: 2rem 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid var(--rule);
-    }
-    .footer-note {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-mute);
-    }
-    .footer-links {
-      display: flex;
-      gap: 1.5rem;
-    }
-    .footer-links a {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-mute);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--accent); }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .service-block,
-      .solo-block {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-      .service-meta,
-      .solo-label { position: static; }
-      .service-number { font-size: 2.5rem; }
-      .cta-block { grid-template-columns: 1fr; }
-    }
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Field Work | WeanTech LLC</title>
+<meta name="description" content="Independent AI assurance, resilience assessments, and evidence-led field studies for high-consequence environments."/>
+<meta name="theme-color" content="#0a0e17"/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0e17'/%3E%3Cg stroke='%23c8a96e' stroke-width='3'%3E%3Cline x1='18' y1='46' x2='32' y2='20'/%3E%3Cline x1='32' y1='20' x2='46' y2='46'/%3E%3Cline x1='18' y1='46' x2='46' y2='46'/%3E%3C/g%3E%3Cg fill='%23c8a96e'%3E%3Ccircle cx='18' cy='46' r='6'/%3E%3Ccircle cx='32' cy='20' r='6'/%3E%3Ccircle cx='46' cy='46' r='6'/%3E%3C/g%3E%3C/svg%3E"/>
+<meta property="og:title" content="Field Work | WeanTech LLC"/>
+<meta property="og:description" content="Independent AI assurance, resilience assessments, and evidence-led field studies for high-consequence environments."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://weantech.com/capabilities.html"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Field Work | WeanTech LLC"/>
+<meta name="twitter:description" content="Independent AI assurance, resilience assessments, and evidence-led field studies for high-consequence environments."/>
+<link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-
-<nav class="site-nav">
+<canvas id="mesh" aria-hidden="true"></canvas>
+<nav class="site-nav" id="siteNav">
   <div class="site-nav-inner">
-    <a href="index.html" class="nav-brand">Wean<span>Tech</span></a>
-    <ul class="nav-links">
+    <a href="index.html" class="nav-brand">wean<em>tech</em><span class="cursor">▊</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+    <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Home</a></li>
       <li><a href="research.html">Research</a></li>
       <li><a href="capabilities.html" class="active">Field Work</a></li>
@@ -389,30 +31,24 @@
     </ul>
   </div>
 </nav>
-
-<div class="page-wrap">
-
+<main class="page-wrap">
   <div class="page-head">
     <p class="eyebrow">WeanTech LLC · Field Work</p>
     <h1>Independent evaluation. <em>Practical resilience.</em></h1>
-    <p class="lede">
-      Field work funds and informs the research program. WeanTech does not sell generic AI implementation. We help organizations evaluate what is being proposed, understand what fails under disruption, and design field studies that produce usable evidence.
-    </p>
+    <p class="lede">Field work funds and informs the research program. WeanTech does not sell generic AI implementation. We help organizations evaluate what is being proposed, understand what fails under disruption, and design field studies that produce usable evidence.</p>
   </div>
 
-  <div class="service-block">
-    <div class="service-meta">
-      <div class="service-number">01</div>
-      <p class="service-label">AI & Operational<br>Assurance Review</p>
+  <div class="block">
+    <div class="block-meta">
+      <div class="block-number">01</div>
+      <p class="block-kicker">AI &amp; Operational<br/>Assurance Review</p>
     </div>
-    <div class="service-body">
-      <h2>Independent scrutiny before—or after—an AI decision.</h2>
-      <p>
-        An AI proposal should be judged by the workflow, data, security, governance, failure modes, and people who will rely on it—not by a sales demonstration. WeanTech provides an independent technical assessment before a major commitment or when a deployed system is not delivering what was promised.
-      </p>
-      <div class="deliverables">
-        <p class="deliverables-label">Typical Output</p>
-        <ul class="deliverables-list">
+    <div class="block-body">
+      <h2>Independent scrutiny before — or after — an AI decision.</h2>
+      <p>An AI proposal should be judged by the workflow, data, security, governance, failure modes, and people who will rely on it — not by a sales demonstration. WeanTech provides an independent technical assessment before a major commitment or when a deployed system is not delivering what was promised.</p>
+      <div class="checklist">
+        <p class="checklist-label">Typical Output</p>
+        <ul>
           <li>Problem-fit, data, security, and vendor-dependency review</li>
           <li>Human-control, auditability, and failure-mode assessment</li>
           <li>Plain-language risk and remediation priorities</li>
@@ -422,47 +58,39 @@
     </div>
   </div>
 
-  <div class="service-block">
-    <div class="service-meta">
-      <div class="service-number">02</div>
-      <p class="service-label">Resilience Readiness<br>Assessment</p>
+  <div class="block">
+    <div class="block-meta">
+      <div class="block-number">02</div>
+      <p class="block-kicker">Resilience Readiness<br/>Assessment</p>
     </div>
-    <div class="service-body">
+    <div class="block-body">
       <h2>Understand what remains when dependencies fail.</h2>
-      <p>
-        Organizations often discover their real dependencies during an outage or incident. This engagement maps the relationship between cloud services, identity, networks, vendors, physical operations, and decision workflows—then identifies practical degraded-mode options.
-      </p>
-      <p>
-        The aim is not a generic compliance checklist. It is a clear picture of the operational consequences of failure and a prioritized plan for retaining useful capability.
-      </p>
-      <div class="deliverables">
-        <p class="deliverables-label">Typical Output</p>
-        <ul class="deliverables-list">
+      <p>Organizations often discover their real dependencies during an outage or incident. This engagement maps the relationship between cloud services, identity, networks, vendors, physical operations, and decision workflows — then identifies practical degraded-mode options.</p>
+      <p>The aim is not a generic compliance checklist. It is a clear picture of the operational consequences of failure and a prioritized plan for retaining useful capability.</p>
+      <div class="checklist">
+        <p class="checklist-label">Typical Output</p>
+        <ul>
           <li>Dependency and failure-cascade map</li>
           <li>Cyber-physical risk and continuity observations</li>
           <li>Degraded-mode workflow priorities</li>
           <li>Evidence-backed next-step recommendations</li>
         </ul>
       </div>
-      <div class="framework-note">
-        <p>The work is guided by our <a href="opaque-clarity.html">research principles</a>: degraded-mode first, security by design, human accountability, and evidence over hype.</p>
-      </div>
+      <div class="note"><p>The work is guided by our <a href="opaque-clarity.html">research principles</a>: degraded-mode first, security by design, human accountability, and evidence over hype.</p></div>
     </div>
   </div>
 
-  <div class="service-block">
-    <div class="service-meta">
-      <div class="service-number">03</div>
-      <p class="service-label">Field Exercise &<br>Evaluation Study</p>
+  <div class="block">
+    <div class="block-meta">
+      <div class="block-number">03</div>
+      <p class="block-kicker">Field Exercise &amp;<br/>Evaluation Study</p>
     </div>
-    <div class="service-body">
+    <div class="block-body">
       <h2>Test the operating concept before trusting it.</h2>
-      <p>
-        WeanTech designs and documents scenario-based exercises for emerging communications, continuity, and decision-support capabilities. The objective is to learn what works, what fails, and what conditions must be true—not to stage a demonstration that guarantees a favorable result.
-      </p>
-      <div class="deliverables">
-        <p class="deliverables-label">Typical Output</p>
-        <ul class="deliverables-list">
+      <p>WeanTech designs and documents scenario-based exercises for emerging communications, continuity, and decision-support capabilities. The objective is to learn what works, what fails, and what conditions must be true — not to stage a demonstration that guarantees a favorable result.</p>
+      <div class="checklist">
+        <p class="checklist-label">Typical Output</p>
+        <ul>
           <li>Scenario design, safety boundaries, and measurable test objectives</li>
           <li>Prototype or operating-concept observation</li>
           <li>After-action report with limitations and findings</li>
@@ -472,40 +100,34 @@
     </div>
   </div>
 
-  <div class="solo-block">
-    <div class="solo-label">Research-Led Model</div>
-    <div class="solo-body">
-      <h2>Services are a means, not the identity.</h2>
-      <p>Each field engagement must either strengthen operational resilience for the client or contribute a legitimate lesson to the research program—ideally both. WeanTech does not use field work to funnel organizations toward a predetermined AI tool or platform.</p>
-    </div>
-  </div>
+  <section class="panel">
+    <div class="section-label">Research-Led Model</div>
+    <h2>Services are a means, not the identity.</h2>
+    <p>Each field engagement must either strengthen operational resilience for the client or contribute a legitimate lesson to the research program — ideally both. WeanTech does not use field work to funnel organizations toward a predetermined AI tool or platform.</p>
+  </section>
 
-  <div class="cta-block">
-    <div class="cta-panel">
-      <p class="cta-panel-label">Research Partnerships</p>
+  <div class="cta-split">
+    <div class="cta-card">
+      <span class="door-label">Research Partnerships</span>
       <h3>Host, advise, or sponsor a field study.</h3>
       <p>We are looking for informed challenge and practical operating contexts for resilience research, beginning with Project MESH.</p>
       <a class="btn" href="research.html">View the Research</a>
     </div>
-    <div class="cta-panel">
-      <p class="cta-panel-label">Direct Engagement</p>
+    <div class="cta-card">
+      <span class="door-label">Direct Engagement</span>
       <h3>Direct, independent engagement.</h3>
       <p>Discuss an AI assurance review, resilience assessment, or field exercise directly with the founder.</p>
-      <a class="btn btn-ghost" href="mailto:contact@weantech.com">contact@weantech.com</a>
+      <a class="btn ghost" href="mailto:contact@weantech.com">contact@weantech.com</a>
     </div>
   </div>
-
-</div>
-
-<div class="page-wrap">
-  <footer class="site-footer">
-    <span class="footer-note">© 2026 WeanTech LLC</span>
-    <div class="footer-links">
-      <a href="opaque-clarity.html">Principles</a>
-      <a href="mailto:contact@weantech.com">Contact</a>
-    </div>
-  </footer>
-</div>
-
+</main>
+<footer class="site-footer">
+  <span>© 2026 WeanTech LLC</span>
+  <div class="footer-links">
+    <a href="opaque-clarity.html">Principles</a>
+    <a href="mailto:contact@weantech.com">Contact</a>
+  </div>
+</footer>
+<script src="site.js"></script>
 </body>
 </html>

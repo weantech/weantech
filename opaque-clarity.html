@@ -1,62 +1,70 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Research Principles | WeanTech LLC</title>
-  <meta name="description" content="The principles that guide WeanTech's resilient-systems research and responsible use of AI."/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #0d0d0d; --bg-2: #111111; --rule: #2a2a2a; --text: #e8e4dc; --text-dim: #8a8478; --text-mute: #4a4640; --accent: #c8a96e; --white: #f5f1eb; }
-    body { background: var(--bg); color: var(--text); font-family: 'Lora', Georgia, serif; line-height: 1.7; -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column; }
-    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; border-bottom: 1px solid var(--rule); background: rgba(13,13,13,0.96); backdrop-filter: blur(8px); }
-    .site-nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; height: 60px; display: flex; align-items: center; justify-content: space-between; }
-    .nav-brand { font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem; color: var(--text); text-decoration: none; text-transform: uppercase; }
-    .nav-brand span { color: var(--accent); }
-    .nav-links { list-style: none; display: flex; gap: 2rem; }
-    .nav-links a { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; text-transform: uppercase; color: var(--text-dim); text-decoration: none; }
-    .nav-links a.active { color: var(--accent); }
-    .page-wrap { max-width: 1100px; margin: 0 auto; padding: 140px 2rem 80px; flex: 1; }
-    .page-head { border-bottom: 1px solid var(--rule); padding-bottom: 80px; margin-bottom: 80px; }
-    .page-head h1 { font-family: 'Playfair Display', Georgia, serif; font-size: 2.5rem; color: var(--white); }
-    .section-body h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 2rem; color: var(--white); margin-bottom: 1.5rem; }
-    .section-body p { color: var(--text-dim); margin-bottom: 1.25rem; max-width: 64ch; }
-    .axiom-block { margin: 2rem 0; padding: 1.75rem 2rem; border-left: 2px solid var(--accent); background: var(--bg-2); }
-    .axiom-block p { font-family: 'Playfair Display', Georgia, serif; font-size: 1.1rem; font-style: italic; color: var(--white); }
-    .site-footer { padding: 2rem 0; border-top: 1px solid var(--rule); max-width: 1100px; margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between; padding-left: 2rem; padding-right: 2rem; }
-    .footer-note { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-mute); }
-    .footer-links a { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-mute); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--accent); }
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Research Principles | WeanTech LLC</title>
+<meta name="description" content="The principles that guide WeanTech's resilient-systems research and responsible use of AI."/>
+<meta name="theme-color" content="#0a0e17"/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0e17'/%3E%3Cg stroke='%23c8a96e' stroke-width='3'%3E%3Cline x1='18' y1='46' x2='32' y2='20'/%3E%3Cline x1='32' y1='20' x2='46' y2='46'/%3E%3Cline x1='18' y1='46' x2='46' y2='46'/%3E%3C/g%3E%3Cg fill='%23c8a96e'%3E%3Ccircle cx='18' cy='46' r='6'/%3E%3Ccircle cx='32' cy='20' r='6'/%3E%3Ccircle cx='46' cy='46' r='6'/%3E%3C/g%3E%3C/svg%3E"/>
+<meta property="og:title" content="Research Principles | WeanTech LLC"/>
+<meta property="og:description" content="The principles that guide WeanTech's resilient-systems research and responsible use of AI."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://weantech.com/opaque-clarity.html"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Research Principles | WeanTech LLC"/>
+<meta name="twitter:description" content="The principles that guide WeanTech's resilient-systems research and responsible use of AI."/>
+<link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-<nav class="site-nav">
-  <div class="site-nav-inner"><a href="index.html" class="nav-brand">Wean<span>Tech</span></a>
-    <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="research.html">Research</a></li><li><a href="capabilities.html">Field Work</a></li><li><a href="opaque-clarity.html" class="active">Principles</a></li><li><a href="about.html">About</a></li></ul>
+<canvas id="mesh" aria-hidden="true"></canvas>
+<nav class="site-nav" id="siteNav">
+  <div class="site-nav-inner">
+    <a href="index.html" class="nav-brand">wean<em>tech</em><span class="cursor">▊</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="capabilities.html">Field Work</a></li>
+      <li><a href="opaque-clarity.html" class="active">Principles</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
   </div>
 </nav>
-<div class="page-wrap">
-  <div class="page-head"><h1>Responsible research requires <em>clear limits, human control, and usable evidence.</em></h1></div>
-  <div class="section-body">
-    <h2>Our operating principles.</h2>
-    <p>WeanTech develops capabilities for conditions where time, communications, and certainty are limited. That work demands a higher standard than a polished demonstration. These principles guide the research, prototype, and field-evaluation process.</p>
-    <div class="axiom-block">
-      <p><strong>Degraded-mode first.</strong> Core capability should remain useful without Internet, cloud access, or a healthy primary network.</p>
-      <p><strong>Secure by design.</strong> Identity, authorization, encryption, and auditability belong in the system from the beginning.</p>
-      <p><strong>Human accountable.</strong> AI may assist a bounded task; people retain authority, can override it, and can understand the basis for material recommendations.</p>
-      <p><strong>Evidence over hype.</strong> We state the operating conditions, test the limits, publish what happened, and distinguish a prototype from a deployable system.</p>
-      <p><strong>Interoperable where possible.</strong> Systems should avoid unnecessary dependence on a single vendor, platform, or opaque data model.</p>
-    </div>
+<main class="page-wrap">
+  <div class="page-head">
+    <p class="eyebrow">WeanTech LLC · Principles</p>
+    <h1>Responsible research requires <em>clear limits, human control, and usable evidence.</em></h1>
+    <p class="lede">WeanTech develops capabilities for conditions where time, communications, and certainty are limited. That work demands a higher standard than a polished demonstration.</p>
   </div>
-</div>
+
+  <section class="panel">
+    <div class="section-label">Our Operating Principles</div>
+    <h2>The rules the lab holds itself to.</h2>
+    <p>These principles guide the research, prototype, and field-evaluation process — every program, every engagement.</p>
+    <div class="checklist">
+      <p class="checklist-label">The Five Principles</p>
+      <ul>
+        <li><strong>Degraded-mode first.</strong>&nbsp;Core capability should remain useful without Internet, cloud access, or a healthy primary network.</li>
+        <li><strong>Secure by design.</strong>&nbsp;Identity, authorization, encryption, and auditability belong in the system from the beginning.</li>
+        <li><strong>Human accountable.</strong>&nbsp;AI may assist a bounded task; people retain authority, can override it, and can understand the basis for material recommendations.</li>
+        <li><strong>Evidence over hype.</strong>&nbsp;We state the operating conditions, test the limits, publish what happened, and distinguish a prototype from a deployable system.</li>
+        <li><strong>Interoperable where possible.</strong>&nbsp;Systems should avoid unnecessary dependence on a single vendor, platform, or opaque data model.</li>
+      </ul>
+    </div>
+    <div class="btn-row">
+      <a class="btn" href="research.html">See the Research →</a>
+      <a class="btn ghost" href="capabilities.html">Field Work</a>
+    </div>
+  </section>
+</main>
 <footer class="site-footer">
-  <span class="footer-note">© 2026 WeanTech LLC</span>
+  <span>© 2026 WeanTech LLC</span>
   <div class="footer-links">
-    <a href="research.html">Research</a><a href="mailto:contact@weantech.com">Contact</a>
+    <a href="research.html">Research</a>
+    <a href="mailto:contact@weantech.com">Contact</a>
   </div>
 </footer>
+<script src="site.js"></script>
 </body>
 </html>
